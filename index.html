@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  
+    <base target="_top">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>$(function(){
+$('h5').css('color','red')
+})</script>
+
+
+  </head>
+  <body>
+ 
+    <h5  style='margin-left:20px' > English Persian Dictionary</h5>
+   <input  type='text' placeholder="Please enter english word" id='username' size='30' style='margin-left:20px'> 
+   <button onClick='doStuff()' class='btn btn-primary'id='btn' style='margin-left:20px'>Enter</button>   <br> <br>
+   <textarea  type='text' id='out' rows='15' cols='100' style='margin-left:20px'  ></textarea>
+   
+   
+   <script>
+   // document.getElementById('btn').addEventListener('click',doStuff);
+     function doStuff(){
+     var uname=document.getElementById('username').value.toLowerCase();
+    google.script.run.withSuccessHandler(meaning).getData(uname);
+     
+     }
+     function meaning(outcome){
+     
+     document.getElementById('out').value=outcome.join('\n');
+     }
+     
+     
+     var input = document.getElementById("username");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("btn").click();
+  }
+});
+     
+     
+     
+     
+   </script>
+  </body>
+</html>
+
+
